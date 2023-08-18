@@ -819,7 +819,7 @@ $row = (mysqli_fetch_assoc($result));
                                     </div>  
                                     <div class="card-toolbar">
                                        <a type="button" onclick="printDiv();" class="btn btn-primary mr-2">Print</a>
-                                       <a href="aapplicantUpdateView.php?id=<?php echo $_SESSION['id']; ?>" type="button" class="btn btn-success mr-2">Edit Profile</a>
+                                       <a href="aapplicantUpdateView.php?applicant_id=<?php echo $dispId; ?>" type="button" class="btn btn-success mr-2">Edit Profile</a>
                                     </div>
                                  </div>
                                  <div class="card-body" id="print-container">
