@@ -14,19 +14,30 @@ if ($type != 'Applicant') {
    $dispGender = $row['gender'];
    $dispImg = $row['profile_avatar'];
    $dispEmail = $row['email'];
-}else {
+} else {
    $id = $_SESSION['id'];
-   $sql = "SELECT * FROM applicants WHERE id = $id";
+   $applicant_id = $_SESSION['applicant_id'];
+
+   $sql = "SELECT * FROM applicants WHERE applicant_id = '$applicant_id'";
    $result = mysqli_query($con, $sql);
    $row = (mysqli_fetch_assoc($result));
-
-   $dispId = $row['applicant_id'];
-   $dispFName = $row['first_name'];
-   $dispSName = $row['surname'];
-   $dispLName = $row['last_name'];
-   $dispGender = $row['gender'];
-   $dispImg = $row['profile_avatar'];
-   $dispEmail = $row['email'];
+   if (!$row) {
+      $dispId = "";
+      $dispFName = "";
+      $dispSName = "";
+      $dispLName = "";
+      $dispGender = "";
+      $dispImg = "";
+      $dispEmail = "";
+   } else {
+      $dispId = $row['applicant_id'];
+      $dispFName = $row['first_name'];
+      $dispSName = $row['surname'];
+      $dispLName = $row['last_name'];
+      $dispGender = $row['gender'];
+      $dispImg = $row['profile_avatar'];
+      $dispEmail = $row['email'];
+   }
 }
 
 
@@ -39,7 +50,7 @@ if ($type != 'Applicant') {
          <!--begin::Header Menu-->
          <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
             <!--begin::Header Nav-->
-            
+
             <!--end::Header Nav-->
          </div>
          <!--end::Header Menu-->
@@ -118,41 +129,38 @@ if ($type != 'Applicant') {
             <!--end::Toggle-->
 
             <!--begin::Dropdown-->
-            
+
             <!--end::Dropdown-->
          </div>
          <!--end::Notifications-->
 
-         <!--begin::Quick Actions-->
-         
-         <!--end::Quick Actions-->
-
-         <!--begin::Cart-->
-         
-         <!--end::Cart-->
-
-         <!--begin::Quick panel-->
-         
-         <!--end::Quick panel-->
-
-         <!--begin::Chat-->
-         
-         <!--end::Chat-->
-
-         <!--begin::Languages-->
-         
-         <!--end::Languages-->
 
          <!--begin::User-->
-         <div class="topbar-item">
-            <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
-               <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
-               <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3"><?php echo $_SESSION['first_name']; ?></span>
-               <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
-                  <span class="symbol-label font-size-h5 font-weight-bold"><?php echo $dispFName[0]; ?></span>
-               </span>
+         <?php
+         if (!$row) { ?>
+            <div class="topbar-item">
+               <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
+                  <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
+                  <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3"><?php echo $_SESSION['applicant_id']; ?></span>
+                  <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
+                  </span>
+               </div>
             </div>
-         </div>
+         <?php
+         } else { ?>
+            <div class="topbar-item">
+               <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
+                  <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi,</span>
+                  <span class="text-dark-50 font-weight-bolder font-size-base d-none d-md-inline mr-3"><?php echo $_SESSION['first_name']; ?></span>
+                  <span class="symbol symbol-lg-35 symbol-25 symbol-light-success">
+                     <span class="symbol-label font-size-h5 font-weight-bold"><?php echo $dispFName[0]; ?></span>
+                  </span>
+               </div>
+            </div>
+         <?php
+         }
+         ?>
+
          <!--end::User-->
       </div>
       <!--end::Topbar-->

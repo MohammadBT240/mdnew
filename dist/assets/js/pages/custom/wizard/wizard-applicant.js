@@ -62,13 +62,6 @@ var KTWizard1 = (function () {
               },
             },
           },
-          title: {
-            validators: {
-              notEmpty: {
-                message: "Title is required",
-              },
-            },
-          },
           first_name: {
             validators: {
               notEmpty: {
@@ -212,6 +205,164 @@ var KTWizard1 = (function () {
             },
           },
         },
+        // fields: {
+        //   applicant_id: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Applicant ID is required",
+        //       },
+        //     },
+        //   },
+        //   title: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Title is required",
+        //       },
+        //     },
+        //   },
+        //   first_name: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "First Name is required",
+        //       },
+        //     },
+        //   },
+        //   profile_avatar: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Photo is required",
+        //       },
+        //     },
+        //   },
+        //   surname: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Surname is required",
+        //       },
+        //     },
+        //   },
+        //   date_of_birth: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Date Of Birth is required",
+        //       },
+        //     },
+        //   },
+        //   last_name: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Last Name is required",
+        //       },
+        //     },
+        //   },
+        //   gender: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Gender is required",
+        //       },
+        //     },
+        //   },
+        //   country: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Country is required",
+        //       },
+        //     },
+        //   },
+        //   state: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "State is required",
+        //       },
+        //     },
+        //   },
+        //   city: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Lga is required",
+        //       },
+        //     },
+        //   },
+        //   ward: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Ward is required",
+        //       },
+        //     },
+        //   },
+        //   polling_unit: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Polling Unit is required",
+        //       },
+        //     },
+        //   },
+        //   residential_address: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Address is required",
+        //       },
+        //     },
+        //   },
+        //   phone_number: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Phone Number is required",
+        //       },
+        //     },
+        //   },
+        //   email: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Email is required",
+        //       },
+        //       emailAddress: {
+        //         message: "The value is not a valid email address",
+        //       },
+        //     },
+        //   },
+        //   marital_status: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Marital Status is required",
+        //       },
+        //     },
+        //   },
+        //   password: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "password is required",
+        //       },
+        //     },
+        //   },
+        //   cpassword: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "The password confirmation is required",
+        //       },
+        //       identical: {
+        //         compare: function () {
+        //           return form.querySelector('[name="password"]').value;
+        //         },
+        //         message: "The password and its confirm are not the same",
+        //       },
+        //     },
+        //   },
+        //   identification: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Identification is required",
+        //       },
+        //     },
+        //   },
+        //   id_photo: {
+        //     validators: {
+        //       notEmpty: {
+        //         message: "Please Select ID file",
+        //       },
+        //     },
+        //   },
+        // },
         plugins: {
           trigger: new FormValidation.plugins.Trigger(),
           bootstrap: new FormValidation.plugins.Bootstrap(),

@@ -1,12 +1,13 @@
 <?php
 include("assets/php/connection.php");
 
-$id = $_GET['id'];
+$applicant_id = $_GET['applicant_id'];
 
-$sql = "SELECT * FROM applicants WHERE id = $id";
+$sql = "SELECT * FROM applicants WHERE applicant_id = '$applicant_id'";
 $result = mysqli_query($con, $sql);
 $row = (mysqli_fetch_assoc($result));
 
+$id = $row['id'];
 $dispId = $row['applicant_id'];
 $dispTitle = $row['title'];
 $dispFName = $row['first_name'];
@@ -214,7 +215,7 @@ $dispImg = $row['profile_avatar'];
                                           <!--begin::Input-->
                                           <div class="form-group">
                                              <label>Applicant ID</label>
-                                             <input type="text" class="form-control form-control-solid form-control-lg" name="applicant_id" placeholder="id" value="<?php echo $dispId; ?>" data-control="select2" />
+                                             <input type="text" readonly class="form-control form-control-solid form-control-lg" name="applicant_id" placeholder="id" value="<?php echo $dispId; ?>" data-control="select2" />
                                              <span class="form-text text-muted">Please enter the Applicant's ID.</span>
                                           </div>
                                           <!--end::Input-->
@@ -621,7 +622,16 @@ $dispImg = $row['profile_avatar'];
                                           <!--begin::Input-->
                                           <div class="form-group">
                                              <label>Name of next of kin</label>
-                                             <select name="title" class="form-control form-control-solid form-control-lg" name="relationship_kin" placeholder="Relationship" value="<?php echo $dispKinRelation; ?>" data-control="select2">
+                                             <input type="text" class="form-control form-control-solid form-control-lg" name="name_of_kin" placeholder="Firstname" value="<?php echo $dispKinRelation; ?>" data-control="select2" />
+                                             <span class="form-text text-muted">Please enter the Name of next of kin.</span>
+                                          </div>
+                                          <!--end::Input-->
+                                       </div>
+                                       <div class="col-xl-6">
+                                          <!--begin::Input-->
+                                          <div class="form-group">
+                                             <label>Relationship</label>
+                                             <select name="relationship_kin" class="form-control form-control-solid form-control-lg" name="relationship_kin" placeholder="Relationship" value="<?php echo $dispKinRelation; ?>" data-control="select2">
                                                 <option value="<?php echo $dispKinRelation; ?>"><?php echo $dispKinRelation; ?></option>
                                                 <option value="Mother">Mother</option>
                                                 <option value="Father">Father</option>
@@ -632,15 +642,7 @@ $dispImg = $row['profile_avatar'];
                                                 <option value="Aunty">Aunty</option>
                                                 <option value="Grand Mother">Grand Mother</option>
                                                 <option value="Grand Father">Grand Father</option>
-                                             </select> <span class="form-text text-muted">Please enter the Name of next of kin.</span>
-                                          </div>
-                                          <!--end::Input-->
-                                       </div>
-                                       <div class="col-xl-6">
-                                          <!--begin::Input-->
-                                          <div class="form-group">
-                                             <label>Relationship</label>
-                                             <input type="text" class="form-control form-control-solid form-control-lg" name="relationship_kin" placeholder="Firstname" value="<?php echo $dispKinRelation; ?>" data-control="select2" />
+                                             </select>
                                              <span class="form-text text-muted">Please enter the relationship with next of kin.</span>
                                           </div>
                                           <!--end::Input-->

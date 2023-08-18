@@ -1,12 +1,13 @@
 <?php
 include("assets/php/connection.php");
 
-$id = $_GET['id'];
+$applicant_id = $_GET['applicant_id'];
 
-$sql = "SELECT * FROM applicants WHERE id = $id";
+$sql = "SELECT * FROM applicants WHERE applicant_id = '$applicant_id'";
 $result = mysqli_query($con, $sql);
 $row = (mysqli_fetch_assoc($result));
 
+$id = $row['id'];
 $dispId = $row['applicant_id'];
 $dispTitle = $row['title'];
 $dispFName = $row['first_name'];

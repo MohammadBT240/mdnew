@@ -7,7 +7,7 @@ $id = $_POST['id'];
 // Perform your validation and deletion logic here
 // For example, you can use a DELETE SQL query
 
-$sql = "DELETE FROM applicants WHERE id = '$id'";
+$sql = "DELETE FROM applicants WHERE applicant_id = '$id'";
 $result = mysqli_query($con, $sql);
 
 if ($result) {
