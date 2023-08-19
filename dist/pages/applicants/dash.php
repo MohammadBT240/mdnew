@@ -779,13 +779,21 @@ $row = (mysqli_fetch_assoc($result));
                   <!--begin::Toolbar-->
                   <div class="d-flex align-items-center">
                      <!--begin::Actions-->
-
+                     <!-- <a href="#" class="btn btn-clean btn-sm font-weight-bold font-size-base mr-1">
+                        Today
+                     </a>
+                     <a href="#" class="btn btn-clean btn-sm font-weight-bold font-size-base mr-1">
+                        Month
+                     </a>
+                     <a href="#" class="btn btn-clean btn-sm font-weight-bold font-size-base mr-1">
+                        Year
+                     </a> -->
                      <!--end::Actions-->
 
                      <!--begin::Daterange-->
                      <a href="#" class="btn btn-sm btn-light font-weight-bold mr-2" id="kt_dashboard_daterangepicker" data-toggle="tooltip" title="Select dashboard daterange" data-placement="left">
                         <span class="text-muted font-size-base font-weight-bold mr-2" id="kt_dashboard_daterangepicker_title">Today</span>
-                        <span class="text-primary font-size-base font-weight-bolder" id="kt_dashboard_daterangepicker_date">Aug 16</span>
+                        <span class="text-primary font-size-base font-weight-bolder" id="kt_dashboard_daterangepicker_date"></span>
                      </a>
                      <!--end::Daterange-->
 
@@ -816,7 +824,7 @@ $row = (mysqli_fetch_assoc($result));
                                        <h3 class="card-label">
                                           <small></small>
                                        </h3>
-                                    </div>  
+                                    </div>
                                     <div class="card-toolbar">
                                        <a type="button" onclick="printDiv();" class="btn btn-primary mr-2">Print</a>
                                        <a href="aapplicantUpdateView.php?applicant_id=<?php echo $dispId; ?>" type="button" class="btn btn-success mr-2">Edit Profile</a>
@@ -883,54 +891,73 @@ $row = (mysqli_fetch_assoc($result));
                                     <div class="row">
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Applicant Id:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispId; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispId; ?>" />
+                                             </span>
                                        </div>
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Nationality:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispCountry; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispCountry; ?>" />
+                                             </span>
                                        </div>
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">State of Origin:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispState; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value=" <?php echo $dispState; ?>" />
+                                            </span>
                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <div class="row">
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">LGA:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispCity; ?></span>
+                                          
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispCity; ?>" />
+                                             </span>
                                        </div>
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Ward:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispWard; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispWard; ?>" />
+                                             </span>
                                        </div>
                                     </div>
+                                    <br>
 
                                     <div class="row">
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Polling Unit:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispPolling; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispPolling; ?>" />
+                                             </span>
                                        </div>
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Residential Address:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispRA; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispRA; ?>" />
+                                             </span>
                                        </div>
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Other Address:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispA; ?></span>
-                                       </div>
-
-                                       <div class="col-sm">
-                                          <h6 class="font-weight-bolder text-dark">LGA:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispCity; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value=" <?php echo $dispA; ?>" />
+                                            </span>
                                        </div>
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Phone:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispPNo; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispPNo; ?>" />
+                                             </span>
                                        </div>
                                     </div>
 
@@ -939,17 +966,23 @@ $row = (mysqli_fetch_assoc($result));
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">email:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispEmail; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="" />
+                                             <?php echo $dispEmail; ?></span>
                                        </div>
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Marital Status:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispMarital; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispMarital; ?>" />
+                                             </span>
                                        </div>
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Identification Type:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispIdentification; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispIdentification; ?>" />
+                                             </span>
                                        </div>
 
                                        <div class="col-sm">
@@ -958,7 +991,7 @@ $row = (mysqli_fetch_assoc($result));
                                              <div class="form-group row">
                                                 <div class="col-lg-9 col-xl-6">
                                                    <div class="image-input" id="kt_image_2">
-                                                      <img src="assets/images/<?php echo $dispPhotoId; ?>" class="image-input-wrapper">
+                                                      <img src="assets/images/<?php echo $dispPhotoId; ?>" class="form-control form-control-solid form-control-lg image-input-wrapper">
 
                                                       <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
                                                          <i class="ki ki-bold-close icon-xs text-muted"></i>
@@ -984,42 +1017,54 @@ $row = (mysqli_fetch_assoc($result));
                                     <div class="row">
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Institution:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispInstitution; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispInstitution; ?>" />
+                                             </span>
                                        </div>
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Qualification:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispQual; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispQual; ?>" />
+                                             </span>
                                        </div>
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Course:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispCourse; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispCourse; ?>" />
+                                             </span>
                                        </div>
 
-                                       <div class="col-sm">
-                                          <h6 class="font-weight-bolder text-dark">Other Course(s):</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispOtherCourse; ?></span>
-                                       </div>
-
-                                       <div class="col-sm">
-                                          <h6 class="font-weight-bolder text-dark">Date Of Award:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispAwardDate; ?></span>
-                                       </div>
                                     </div>
+
+                                    
 
                                     <br>
 
                                     <div class="row">
-                                       <div class="col-sm">
-                                          <h6 class="font-weight-bolder text-dark">O-Levels Credit:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispCreditNo; ?></span>
+                                       
+                                    <div class="col-sm">
+                                          <h6 class="font-weight-bolder text-dark">Other Course(s):</h6>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispOtherCourse; ?>" />
+                                             </span>
                                        </div>
 
                                        <div class="col-sm">
+                                          <h6 class="font-weight-bolder text-dark">Date Of Award:</h6>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispAwardDate; ?>" />
+                                             </span>
                                        </div>
+
                                        <div class="col-sm">
+                                          <h6 class="font-weight-bolder text-dark">O-Levels Credit:</h6>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispCreditNo; ?>" />
+                                             </span>
                                        </div>
+
                                     </div>
 
                                     <br>
@@ -1035,26 +1080,32 @@ $row = (mysqli_fetch_assoc($result));
                                     <div class="row">
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Name:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispKinName; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispKinName; ?>" />
+                                             </span>
                                        </div>
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Relationship:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispKinRelation; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispKinRelation; ?>" />
+                                             </span>
                                        </div>
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Address:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispKinAddress; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispKinAddress; ?>" />
+                                             </span>
                                        </div>
 
                                        <div class="col-sm">
                                           <h6 class="font-weight-bolder text-dark">Phone Number:</h6>
-                                          <span class="text-muted font-weight-bold font-size-sm mt-1"><?php echo $dispKinPhone; ?></span>
+                                          <span class="text-muted font-weight-bold font-size-sm mt-1">
+                                          <input type="text" class="form-control form-control-solid form-control-lg" readonly value="<?php echo $dispKinPhone; ?>" />
+                                             </span>
                                        </div>
 
-                                       <div class="col-sm">
-                                       </div>
                                     </div>
 
                                     <br>

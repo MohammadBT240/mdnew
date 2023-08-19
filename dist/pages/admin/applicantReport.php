@@ -1,4 +1,5 @@
 <!--begin::Body-->
+
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
    <!--begin::Main-->
    <!--begin::Wrapper-->
@@ -61,6 +62,49 @@
                   </div>
                   <div class="card-body">
                      <div class="table-responsive">
+                        <div class="row">
+                           <div class="col-lg-3">
+                              <label for="Country">State:</label>
+                              <div class="form-group">
+                                 <select type="text" name="state" id="state" class="form-control form-control-solid form-control-lg" data-control="select2">
+                                    <option value="" selected>Select</option>
+                                    <?php
+                                    $conn = mysqli_connect('localhost', 'root', '', 'mdnew');
+                                    $query = mysqli_query($conn, "SELECT * FROM states");
+                                    while ($row = mysqli_fetch_array($query)) {
+                                    ?>
+                                       <option value="<?php echo $row['state_name']; ?>"><?php echo $row['state_name']; ?> </option>
+                                    <?php
+                                    }
+                                    ?>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-lg-3">
+                              <label for="city">LGA:</label>
+                              <div class="form-group">
+                                 <select name="city" id="city" class="form-control form-control-solid form-control-lg" data-control="select2">
+                                    <option value="" selected>Select</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-lg-3">
+                              <label for="Country">Ward:</label>
+                              <div class="form-group">
+                                 <select type="text" name="ward" id="ward" class="form-control form-control-solid form-control-lg" data-control="select2">
+                                    <option value="">Select Ward</option>
+                                 </select>
+                              </div>
+                           </div>
+                           <div class="col-lg-3">
+                              <label for="polling_unit">Polling Unit:</label>
+                              <div class="form-group">
+                                 <select name="polling_unit" id="polling_unit" class="form-control form-control-solid form-control-lg" data-control="select2">
+                                    <option value="" selected>Select</option>
+                                 </select>
+                              </div>
+                           </div>
+                        </div>
                         <table id="example" class="table table-striped table-bordered table-sm" cellspacing="0" style="width:100%">
                            <thead>
                               <tr>
@@ -175,7 +219,6 @@
          });
       });
    </script>
-
    <script type="text/javascript">
       $(document).ready(function() {
          var recordId;
@@ -188,7 +231,7 @@
          // Handle modal's delete button click
          $('#confirmDelete').click(function() {
             if (recordId) {
-               $.ajax({  
+               $.ajax({
                   url: 'assets/php/admin/delete_applicants.php',
                   method: 'POST',
                   data: {
@@ -211,6 +254,142 @@
             // Close the modal
             $('#deleteModal').modal('hide');
          });
+      });
+   </script>
+   <script type="text/javascript">
+      $(document).ready(function() {
+         // Load states based on the selected country
+         $('#country').change(function() {
+            var country = $(this).val();
+
+            if (country != '') {
+               // AJAX request to fetch states
+               $.ajax({
+                  url: 'assets/php/getters/get_states.php',
+                  type: 'post',
+                  data: {
+                     country: country
+                  },
+                  dataType: 'json',
+                  success: function(response) {
+                     var len = response.length;
+
+                     $('#state').empty();
+                     $('#state').append("<option value=''>Select State</option>");
+
+                     for (var i = 0; i < len; i++) {
+                        var name = response[i]['state_name'];
+
+                        $('#state').append("<option value='" + name + "'>" + name + "</option>");
+                     }
+                  }
+               });
+            } else {
+               $('#state').empty();
+               $('#state').append("<option value=''>Select State</option>");
+            }
+
+            // Reset city dropdown
+            $('#city').empty();
+            $('#city').append("<option value=''>Select City</option>");
+         });
+
+         // Load cities based on the selected state
+         $('#state').change(function() {
+            var state = $(this).val();
+
+            if (state != '') {
+               // AJAX request to fetch cities
+               $.ajax({
+                  url: 'assets/php/getters/get_cities.php',
+                  type: 'post',
+                  data: {
+                     state: state
+                  },
+                  dataType: 'json',
+                  success: function(response) {
+                     var len = response.length;
+
+                     $('#city').empty();
+                     $('#city').append("<option value=''>Select City</option>");
+
+                     for (var i = 0; i < len; i++) {
+                        var name = response[i]['local_government'];
+
+                        $('#city').append("<option value='" + name + "'>" + name + "</option>");
+                     }
+                  }
+               });
+            } else {
+               $('#city').empty();
+               $('#city').append("<option value=''>Select City</option>");
+            }
+         });
+
+         // Load wards based on the selected local government
+         $('#city').change(function() {
+            var localGovernment = $(this).val();
+
+            if (localGovernment != '') {
+               // AJAX request to fetch wards
+               $.ajax({
+                  url: 'assets/php/getters/get_wards.php',
+                  type: 'post',
+                  data: {
+                     localGovernment: localGovernment
+                  },
+                  dataType: 'json',
+                  success: function(response) {
+                     var len = response.length;
+
+                     $('#ward').empty();
+                     $('#ward').append("<option value=''>Select Ward</option>");
+
+                     for (var i = 0; i < len; i++) {
+                        var name = response[i]['ward_name'];
+
+                        $('#ward').append("<option value='" + name + "'>" + name + "</option>");
+                     }
+                  }
+               });
+            } else {
+               $('#ward').empty();
+               $('#ward').append("<option value=''>Select Ward</option>");
+            }
+         });
+
+         // Load polling units based on the selected ward
+         $('#ward').change(function() {
+            var ward = $(this).val();
+
+            if (ward != '') {
+               // AJAX request to fetch polling units
+               $.ajax({
+                  url: 'assets/php/getters/get_polling.php',
+                  type: 'post',
+                  data: {
+                     ward: ward
+                  },
+                  dataType: 'json',
+                  success: function(response) {
+                     var len = response.length;
+
+                     $('#polling_unit').empty();
+                     $('#polling_unit').append("<option value=''>Select Polling Unit</option>");
+
+                     for (var i = 0; i < len; i++) {
+                        var name = response[i]['polling_station'];
+
+                        $('#polling_unit').append("<option value='" + name + "'>" + name + "</option>");
+                     }
+                  }
+               });
+            } else {
+               $('#polling_unit').empty();
+               $('#polling_unit').append("<option value=''>Select Polling Unit</option>");
+            }
+         });
+
       });
    </script>
 </body>

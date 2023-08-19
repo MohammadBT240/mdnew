@@ -227,7 +227,7 @@ $dispImg = $row['profile_avatar'];
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-lg-3 col-form-label text-right">Staff ID</label>
                                             <div class="col-lg-9 col-xl-6">
-                                                <input name="staff_id" class="form-control form-control-lg form-control-solid" type="text" value="<?php echo $dispId ?>" />
+                                                <input name="staff_id" readonly class="form-control form-control-lg form-control-solid" type="text" value="<?php echo $dispId ?>" />
                                             </div>
                                         </div>
                                         <div class="form-group row">

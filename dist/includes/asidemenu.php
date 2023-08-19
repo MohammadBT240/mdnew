@@ -102,7 +102,7 @@ if ($type != 'Applicant') {
    <!--begin::Header Mobile-->
    <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
       <!--begin::Logo-->
-      <a href="index.html">
+      <a>
          <img alt="Logo" src="assets/media/logos/logo-light.png" />
       </a>
       <!--end::Logo-->
@@ -816,6 +816,7 @@ if ($type != 'Applicant') {
 
    <!--begin::WIZARD-->
    <script src="assets/js/pages/custom/wizard/wizard-staff.js"></script>
+   <script src="assets/js/pages/custom/wizard/wizard-applicant.js"></script>
    <!--end::Page Scripts-->
 
    <!--begin::IMAGE-->

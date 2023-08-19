@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
    $_SESSION['user_type'] = $row['type'];
    $_SESSION['type'] = $row['type'];
 
-   echo $_SESSION['id'];
+   // echo $_SESSION['type'];
    if ($userType == 'Applicant' && $dashboard_page == 'adashboard.php') {
       // Additional logic for Applicant dashboard
       $_SESSION['applicant_id'] = $row['applicant_id'];
